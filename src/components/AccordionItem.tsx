@@ -22,30 +22,29 @@ export const AccordionItem = ({
       </View>
     ));
 
-  const renderItem = (item) => {
-    console.log("item", item)
+  const renderItem = () => {
     return (
-      <Animated.View style={AllFilmsStyle.accordBody}>
-        <TouchableOpacity onPress={() => onDetailsPress(item.name)} style={AllFilmsStyle.accordBodyButton}>
+      <View style={AllFilmsStyle.accordBody}>
+        <TouchableOpacity style={AllFilmsStyle.accordBodyButton}>
           <Film name="film" size={30} color="#000" />
         </TouchableOpacity>
-      </Animated.View>
+      </View>
     )
   }
 
   return (
     <View style={AllFilmsStyle.accordContainer}>
-      <TouchableOpacity
-        style={AllFilmsStyle.accordHeader}
-        onPress={onHeaderPress}>
-        <Text style={AllFilmsStyle.accordTitle}>{title}</Text>
-        {expanded ? (
-          <Icon name="book-open" size={30} color="#000" />
-        ) : (
-          <Icon name="book" size={30} color="#000" />
-        )}
-      </TouchableOpacity>
-      {/*{expanded && body}*/}
+      <View  style={AllFilmsStyle.accordView}>
+        <TouchableOpacity
+          style={AllFilmsStyle.accordHeader}
+          onPress={onHeaderPress}>
+          <Text style={AllFilmsStyle.accordTitle}>{title}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => onDetailsPress()} style={AllFilmsStyle.accordDetailsView}>
+          <Icon name="book" size={30} color="#fff" />
+        </TouchableOpacity>
+      </View>
+
       {expanded && children && children.length > 0 && (
         <View style={{flexWrap: 'wrap'}}>
           <FlatList

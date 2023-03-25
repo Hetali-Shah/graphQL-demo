@@ -1,20 +1,34 @@
 import React from 'react';
 import {useQuery} from '@apollo/client';
-import {SafeAreaView, ScrollView, StatusBar, Text} from 'react-native';
+import { SafeAreaView, ScrollView, Text } from "react-native";
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import {GET_FILMS} from '../graphQL';
 import AllFilmsStyle from '../assets/style/allFilms';
 import {Accordion} from '../components/Accordion';
+import NoDataFound from '../components/NoDataFound';
+import { APP_SCREEN, RootStackParamList } from '../navigation/screenTypes';
 
-const AllFilms = ({navigation}) => {
+export type AllFilmDetailsProps = NativeStackScreenProps<
+  RootStackParamList,
+  APP_SCREEN.All_FILMS
+  >
+
+const AllFilmDetailsComponent: React.FC<AllFilmDetailsProps> = (
+  props: AllFilmDetailsProps,
+) => {
+  const {navigation} = props;
   const {data, error, loading} = useQuery(GET_FILMS);
 
   if (error) {
-    console.error(error);
     return <Text>Error</Text>;
   }
 
   if (loading) {
     return <Text>Loading .....</Text>;
+  }
+
+  if(data === undefined || data === null) {
+    return <NoDataFound/>
   }
 
   return (
@@ -26,6 +40,6 @@ const AllFilms = ({navigation}) => {
       </ScrollView>
     </SafeAreaView>
   );
-};
+}
 
-export default AllFilms;
+export default AllFilmDetailsComponent;

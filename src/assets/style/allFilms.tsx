@@ -11,7 +11,7 @@ export default StyleSheet.create({
   accordContainer: {
     paddingBottom: StyleConfig.countPixelRatio(5),
   },
-  accordHeader: {
+  accordView:{
     margin: StyleConfig.countPixelRatio(5),
     padding: StyleConfig.countPixelRatio(10),
     backgroundColor: StyleConfig.purple,
@@ -20,15 +20,22 @@ export default StyleSheet.create({
     shadowOpacity: 0.25,
     shadowColor: StyleConfig.gray,
     elevation: 8,
-    borderWidth: 2,
     alignItems: 'center',
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  accordHeader: {
+    flex: 0.9,
+  },
+  accordDetailsView:{
+    flex: 0.1,
+  },
   accordTitle: {
-    color: StyleConfig.black,
+    color: StyleConfig.white,
     fontSize: StyleConfig.fontSizeH2,
+    fontFamily:StyleConfig.andaleMono,
+    textTransform:'capitalize'
   },
   filmName: {
     color: StyleConfig.black,
