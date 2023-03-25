@@ -53,11 +53,15 @@ export const AccordionItem = ({
       {expanded && children && children.length > 0 && (
         <View style={CommonStyle.imageView}>
           <FlatList
-            keyExtractor={(item: any, index: number) => index}
+            keyExtractor={(item: any) => item.id}
             horizontal={false}
             numColumns={3}
             data={children}
             renderItem={({item}) => renderItem(item)}
+            columnWrapperStyle={{
+              justifyContent: 'space-around',
+              flexWrap: 'wrap',
+            }}
           />
         </View>
       )}

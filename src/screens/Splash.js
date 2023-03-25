@@ -3,6 +3,8 @@ import React, {useEffect} from 'react';
 import {NavigationService} from '../navigation/navigationServices';
 import SplashImage from '../assets/images/splash.jpg';
 import {APP_SCREEN} from '../navigation/screenTypes';
+import SplashStyle from '../assets/style/splash';
+import Loader from '../components/Loader';
 
 const Splash = ({navigation}) => {
   useEffect(() => {
@@ -12,7 +14,7 @@ const Splash = ({navigation}) => {
     });
     setTimeout(() => {
       NavigationService.navigate(APP_SCREEN.All_FILMS);
-    }, 2000);
+    }, 3000);
   }, []);
 
   return (
@@ -23,13 +25,11 @@ const Splash = ({navigation}) => {
         translucent
       />
       <ImageBackground
-        style={{
-          width: '100%',
-          height: '100%',
-        }}
+        style={SplashStyle.imageBackground}
         resizeMode="cover"
-        source={SplashImage}
-      />
+        source={SplashImage}>
+        <Loader isAppText={true} loaderStyle={SplashStyle.splashLoaderView} />
+      </ImageBackground>
     </View>
   );
 };

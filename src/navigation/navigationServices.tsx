@@ -8,7 +8,7 @@ import {
 export const navigationRef: React.RefObject<NavigationContainerRef> =
   React.createRef();
 
-type paramType<T> = T | object | any
+type paramType<T> = T | object | any;
 
 function navigate<T>(name: string, params?: paramType<T>): void {
   navigationRef.current?.navigate(name, params);

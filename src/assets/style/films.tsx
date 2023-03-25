@@ -5,6 +5,7 @@ import {WINDOW} from '../../common/global';
 export default StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#E7E7E7',
   },
   imageBack: {
     height: '50%',
@@ -87,7 +88,7 @@ export default StyleSheet.create({
     borderRadius: StyleConfig.countPixelRatio(7),
     shadowOffset: {width: 0, height: StyleConfig.countPixelRatio(2)},
     shadowOpacity: 0.25,
-    shadowColor: StyleConfig.gray,
+    shadowColor: '#000',
     elevation: 8,
   },
   speciesText: {

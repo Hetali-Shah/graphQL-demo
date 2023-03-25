@@ -4,7 +4,6 @@ import {
   StatusBar,
   Text,
   View,
-  TouchableOpacity,
   FlatList,
   Image,
   ScrollView,
@@ -21,6 +20,8 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import StyleConfig from '../assets/style/config';
 import CommonStyle from '../assets/style/layout';
 import HeaderItem from '../components/Films/HeaderItem';
+import Loader from '../components/Loader';
+import SplashStyle from '../assets/style/splash';
 
 export type FilmDetailsProps = NativeStackScreenProps<
   RootStackParamList,
@@ -45,7 +46,7 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
     setTextShown(!textShown);
   };
 
-  const onTextLayout = useCallback(e => {
+  const onTextLayout = useCallback((e: any): void => {
     setLengthMore(e.nativeEvent.lines.length >= 4); //to check the text is more than 4 lines or not
     // console.log(e.nativeEvent);
   }, []);
@@ -72,7 +73,9 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
   const {title, director, releaseDate, openingCrawl, created, producers} =
     data.film;
 
-  return (
+  return loading ? (
+    <Loader loaderStyle={SplashStyle.loaderView} />
+  ) : (
     <ScrollView style={FilmsStyle.container}>
       <StatusBar
         barStyle="light-content"
@@ -88,7 +91,7 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
           style={{height: '100%', width: '100%'}}>
           <View style={FilmsStyle.safeAreaMainView}>
             <HeaderItem />
-            <View style={{paddingTop: 100}}>
+            <View style={{paddingTop: 150}}>
               <Text style={FilmsStyle.bookTitle}>{title}</Text>
               <View style={FilmsStyle.dateView}>
                 <View style={FilmsStyle.dateNestedView}>
@@ -148,10 +151,12 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
         style={{
           paddingHorizontal: StyleConfig.countPixelRatio(15),
         }}>
-        <Text style={FilmsStyle.producerTitleText}>The Producers</Text>
+        <Text style={FilmsStyle.producerTitleText}>
+          {producers.length > 1 ? 'Producers' : 'Producer'}
+        </Text>
         <View style={FilmsStyle.imageView}>
           <FlatList
-            keyExtractor={(item: any, index: number) => index}
+            keyExtractor={(item: any) => item.id}
             horizontal={true}
             data={producers}
             renderItem={({item}) => (
@@ -164,7 +169,7 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
                   }}
                   style={CommonStyle.accordBodyImage}
                 />
-                <Text style={CommonStyle.speciesText} numberOfLines={1}>
+                <Text style={[CommonStyle.speciesText, {width: '80%'}]}>
                   {item}
                 </Text>
               </View>

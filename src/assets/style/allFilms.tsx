@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import StyleConfig from './config';
 import {WINDOW} from '../../common/global';
 
@@ -14,10 +14,10 @@ export default StyleSheet.create({
   accordView: {
     margin: StyleConfig.countPixelRatio(0),
     padding: StyleConfig.countPixelRatio(10),
-    backgroundColor: StyleConfig.newBlue,
+    backgroundColor: '#525bb7',
     shadowOffset: {width: 0, height: StyleConfig.countPixelRatio(2)},
     shadowOpacity: 0.25,
-    shadowColor: StyleConfig.gray,
+    shadowColor: '#fff',
     elevation: 8,
     alignItems: 'center',
     flex: 1,
@@ -49,5 +49,17 @@ export default StyleSheet.create({
   borderRadiusView: {
     borderTopLeftRadius: StyleConfig.countPixelRatio(5),
     borderTopRightRadius: StyleConfig.countPixelRatio(5),
+  },
+  loaderStyle: {
+    flex: 1,
+    right: 0,
+    left: 0,
+    height:
+      Platform.OS === 'ios'
+        ? WINDOW.height
+        : StyleConfig.countPixelRatio(WINDOW.height),
+    width: WINDOW.width,
+    backgroundColor: StyleConfig.black,
+    opacity: 0.2,
   },
 });
