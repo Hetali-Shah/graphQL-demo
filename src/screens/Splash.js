@@ -1,6 +1,7 @@
 import {ImageBackground, StatusBar, View} from 'react-native';
 import React, {useEffect} from 'react';
 import {NavigationService} from '../navigation/navigationServices';
+import SplashImage from '../assets/images/splash.jpg';
 import {APP_SCREEN} from '../navigation/screenTypes';
 
 const Splash = ({navigation}) => {
@@ -27,9 +28,7 @@ const Splash = ({navigation}) => {
           height: '100%',
         }}
         resizeMode="cover"
-        source={{
-          uri: `https://picsum.photos/200/200?random=${Math.random()}`,
-        }}
+        source={SplashImage}
       />
     </View>
   );

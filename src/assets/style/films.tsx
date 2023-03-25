@@ -3,10 +3,17 @@ import StyleConfig from './config';
 import {WINDOW} from '../../common/global';
 
 export default StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   imageBack: {
     height: '50%',
     width: '100%',
     resizeMode: 'cover',
+  },
+  imageBackGround: {
+    width: '100%',
+    aspectRatio: 0.7,
   },
   safeAreaMainView: {
     padding: StyleConfig.countPixelRatio(15),
@@ -14,6 +21,7 @@ export default StyleSheet.create({
   },
   backButton: {
     paddingTop: StyleConfig.countPixelRatio(20),
+    paddingHorizontal: StyleConfig.countPixelRatio(10),
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -96,5 +104,17 @@ export default StyleSheet.create({
     color: StyleConfig.black,
     fontFamily: StyleConfig.bold,
     padding: StyleConfig.countPixelRatio(5),
+  },
+  imageView: {
+    width: '100%',
+    elevation: 8,
+  },
+  imagesView: {
+    padding: StyleConfig.countPixelRatio(5),
+  },
+  openingView: {
+    height: '72%',
+    display: 'flex',
+    paddingHorizontal: StyleConfig.countPixelRatio(15),
   },
 });

@@ -7,7 +7,6 @@ import AllFilmsStyle from '../assets/style/allFilms';
 import AccordionDetailsComponent from '../components/Accordion';
 import NoDataFound from '../components/NoDataFound';
 import {APP_SCREEN, RootStackParamList} from '../navigation/screenTypes';
-import {NavigationService} from '../navigation/navigationServices';
 
 export type AllFilmDetailsProps = NativeStackScreenProps<
   RootStackParamList,

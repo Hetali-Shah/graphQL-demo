@@ -2,6 +2,7 @@ import React from 'react';
 import {FlatList, Text, TouchableOpacity, View, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import AllFilmsStyle from '../assets/style/allFilms';
+import CommonStyle from '../assets/style/layout';
 
 export const AccordionItem = ({
   children,
@@ -12,7 +13,7 @@ export const AccordionItem = ({
 }: any) => {
   const renderItem = (item: any) => {
     return (
-      <View style={AllFilmsStyle.imagesView}>
+      <View style={CommonStyle.imagesView}>
         <View>
           <Image
             resizeMode="cover"
@@ -20,9 +21,9 @@ export const AccordionItem = ({
               uri: `https://picsum.photos/200/200?random=${Math.random()}`,
               cache: 'reload',
             }}
-            style={AllFilmsStyle.accordBodyImage}
+            style={CommonStyle.accordBodyImage}
           />
-          <Text style={AllFilmsStyle.speciesText} numberOfLines={1}>
+          <Text style={CommonStyle.speciesText} numberOfLines={1}>
             {item.name}
           </Text>
         </View>
@@ -50,7 +51,7 @@ export const AccordionItem = ({
       </View>
 
       {expanded && children && children.length > 0 && (
-        <View style={AllFilmsStyle.imageView}>
+        <View style={CommonStyle.imageView}>
           <FlatList
             keyExtractor={(item: any, index: number) => index}
             horizontal={false}

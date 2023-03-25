@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   FlatList,
   Image,
+  ScrollView,
 } from 'react-native';
 import {useQuery} from '@apollo/client';
 import {GET_FILM_BY_ID} from '../graphQL';
@@ -15,12 +16,11 @@ import FilmsStyle from '../assets/style/films';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import LinearGradient from 'react-native-linear-gradient';
 import {APP_SCREEN, RootStackParamList} from '../navigation/screenTypes';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Entypo from 'react-native-vector-icons/Entypo';
-import Feather from 'react-native-vector-icons/Feather';
-import {NavigationService} from '../navigation/navigationServices';
 import StyleConfig from '../assets/style/config';
+import CommonStyle from '../assets/style/layout';
+import HeaderItem from '../components/Films/HeaderItem';
 
 export type FilmDetailsProps = NativeStackScreenProps<
   RootStackParamList,
@@ -73,35 +73,21 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
     data.film;
 
   return (
-    <View style={{flex: 1}}>
+    <ScrollView style={FilmsStyle.container}>
       <StatusBar
         barStyle="light-content"
         backgroundColor="transparent"
         translucent
       />
       <ImageBackground
-        style={{
-          width: '100%',
-          aspectRatio: 0.7,
-        }}
+        style={FilmsStyle.imageBackGround}
         resizeMode="cover"
         source={{uri: `https://picsum.photos/200/200?random=${Math.random()}`}}>
         <LinearGradient
           colors={['#00000000', '#000000']}
           style={{height: '100%', width: '100%'}}>
           <View style={FilmsStyle.safeAreaMainView}>
-            <View style={FilmsStyle.backButton}>
-              <TouchableOpacity
-                onPress={() =>
-                  NavigationService.navigate(APP_SCREEN.All_FILMS)
-                }>
-                <Icon name="arrow-back" size={25} color="#fff" />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Feather name="heart" size={25} color="#fff" />
-              </TouchableOpacity>
-            </View>
-
+            <HeaderItem />
             <View style={{paddingTop: 100}}>
               <Text style={FilmsStyle.bookTitle}>{title}</Text>
               <View style={FilmsStyle.dateView}>
@@ -121,12 +107,7 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
                   <Text style={FilmsStyle.dateText}>{director}</Text>
                 </View>
               </View>
-              <View
-                style={{
-                  height: '72%',
-                  display: 'flex',
-                  paddingHorizontal: StyleConfig.countPixelRatio(15),
-                }}>
+              <View style={FilmsStyle.openingView}>
                 <View style={{marginTop: 'auto'}}>
                   <View style={FilmsStyle.openingCrawlMainView}>
                     <Text style={FilmsStyle.openingCrawTitleText}>
@@ -168,28 +149,30 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
           paddingHorizontal: StyleConfig.countPixelRatio(15),
         }}>
         <Text style={FilmsStyle.producerTitleText}>The Producers</Text>
-        <FlatList
-          key={new Date()}
-          horizontal={true}
-          data={producers}
-          renderItem={({item}) => {
-            return (
-              <View style={FilmsStyle.producerMainView}>
-                <View style={FilmsStyle.producerView}>
-                  <Image
-                    source={{
-                      uri: `https://picsum.photos/200/200?random=${Math.random()}`,
-                    }}
-                    style={{height: 100, width: 100}}
-                  />
-                  <Text style={FilmsStyle.speciesText}>{item}</Text>
-                </View>
+        <View style={FilmsStyle.imageView}>
+          <FlatList
+            keyExtractor={(item: any, index: number) => index}
+            horizontal={true}
+            data={producers}
+            renderItem={({item}) => (
+              <View style={FilmsStyle.imagesView}>
+                <Image
+                  resizeMode="cover"
+                  source={{
+                    uri: `https://picsum.photos/200/200?random=${Math.random()}`,
+                    cache: 'reload',
+                  }}
+                  style={CommonStyle.accordBodyImage}
+                />
+                <Text style={CommonStyle.speciesText} numberOfLines={1}>
+                  {item}
+                </Text>
               </View>
-            );
-          }}
-        />
+            )}
+          />
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 export default FilmDetailsComponent;

@@ -96,9 +96,6 @@ export default {
   // Fonts
   bold: 'Roboto-Bold',
   regular: 'Roboto-Regular',
-  medium: 'Montserrat-Medium',
-  regularItalic: 'Montserrat-Italic',
-  andaleMono: Platform.OS === 'ios' ? 'AndaleMono' : 'Andale-Mono',
 
   //Colors
   ...AppColors,
