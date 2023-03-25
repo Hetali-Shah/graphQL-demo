@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, View } from "react-native";
-import AppImages from "../assets/images/noDataFound.jpeg";
+import AppImages from '../assets/images/noDataFound.jpeg';
 import NoDataFoundStyle from '../assets/style/noDataFound';
 
 const NoDataFound = () => (

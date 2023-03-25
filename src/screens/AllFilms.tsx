@@ -4,7 +4,7 @@ import { SafeAreaView, ScrollView, Text } from "react-native";
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import {GET_FILMS} from '../graphQL';
 import AllFilmsStyle from '../assets/style/allFilms';
-import {Accordion} from '../components/Accordion';
+import AccordionDetailsComponent from '../components/Accordion';
 import NoDataFound from '../components/NoDataFound';
 import { APP_SCREEN, RootStackParamList } from '../navigation/screenTypes';
 
@@ -36,7 +36,7 @@ const AllFilmDetailsComponent: React.FC<AllFilmDetailsProps> = (
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={AllFilmsStyle.container}>
-        <Accordion data={data.allFilms.films} navigation={navigation} />
+        <AccordionDetailsComponent data={data.allFilms.films} navigation={navigation} />
       </ScrollView>
     </SafeAreaView>
   );

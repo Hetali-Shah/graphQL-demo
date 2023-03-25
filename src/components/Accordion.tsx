@@ -2,34 +2,44 @@ import React, {useState} from 'react';
 import {LayoutAnimation} from 'react-native';
 import { AccordionItem } from './AccordionItem';
 import {NavigationService} from '../navigation/navigationServices';
-import {APP_SCREEN} from '../navigation/screenTypes';
+import { APP_SCREEN } from "../navigation/screenTypes";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
-export const Accordion = ({ data, navigation }) => {
+interface Props {
+  data: any,
+  navigation: any
+}
+
+export type AccordionDetailsProps = NativeStackScreenProps<any | undefined>
+
+const AccordionDetailsComponent: React.FC<AccordionDetailsProps> = (
+  props: AccordionDetailsProps
+) => {
   const [expandedIndex, setExpandedIndex] = useState(null);
 
-  const handleHeaderPress = index => {
+  const handleHeaderPress = (index : null) => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     setExpandedIndex(expandedIndex === index ? null : index);
   };
 
-  const onDetailsPress = (title, id) => {
+  const onDetailsPress = (title: string, id: string) => {
     NavigationService.navigate(APP_SCREEN.FILMS, {
       id: id,
       title: title
     });
-    navigation.navigate('Films', {headerName: title, id})
+    props.navigation.navigate('Films', {headerName: title, id})
     setExpandedIndex(null)
   }
 
   return (
     <>
-      {data && data.map((item, index) => (
+      {props.data && props.data.map((item: any, index: number) => (
         <AccordionItem
           key={index}
           title={item.title}
           expanded={expandedIndex === index}
           onHeaderPress={() => handleHeaderPress(index)}
-          navigation={navigation}
+          navigation={props.navigation}
           onDetailsPress={() => onDetailsPress(item.title, item.id)}
         >
           {item.speciesConnection && item.speciesConnection.species}
@@ -37,4 +47,6 @@ export const Accordion = ({ data, navigation }) => {
       ))}
     </>
   );
-};
+}
+
+export default AccordionDetailsComponent;

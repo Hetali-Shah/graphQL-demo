@@ -6,6 +6,7 @@ import {
 } from '@react-navigation/native-stack';
 import AllFilms from "../screens/AllFilms";
 import Films from "../screens/Films";
+import StyleConfig from '../assets/style/config'
 import { View } from "react-native";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -14,11 +15,12 @@ const filmsTabs: React.FC = () => {
   const options: NativeStackNavigationOptions = {
     title: 'All Films',
     headerStyle: {
-      backgroundColor: '#6A5C7F',
+      backgroundColor: StyleConfig.newBlue,
     },
-    headerTintColor: '#fff',
+    headerTintColor: StyleConfig.navyDark,
     headerTitleStyle: {
-      fontWeight: 'bold',
+      fontFamily: StyleConfig.bold,
+      fontSize:StyleConfig.fontSizeH2
     },
   };
 

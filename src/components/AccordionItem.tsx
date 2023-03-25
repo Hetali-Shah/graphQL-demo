@@ -1,7 +1,6 @@
 import React from 'react';
-import {FlatList, Text, TouchableOpacity, View, Animated} from 'react-native';
+import { FlatList, Text, TouchableOpacity, View, Image } from "react-native";
 import Icon from 'react-native-vector-icons/Feather';
-import Film from 'react-native-vector-icons/SimpleLineIcons';
 import AllFilmsStyle from '../assets/style/allFilms';
 
 export const AccordionItem = ({
@@ -11,23 +10,15 @@ export const AccordionItem = ({
   onHeaderPress,
   onDetailsPress,
 }) => {
-  const body =
-    children &&
-    children.map(item => (
-      <View style={AllFilmsStyle.accordBody}>
-        <Text style={AllFilmsStyle.filmName}>{item.name}</Text>
-        <TouchableOpacity onPress={() => onDetailsPress(item.name)}>
-          <Film name="film" size={30} color="#000" />
-        </TouchableOpacity>
-      </View>
-    ));
-
-  const renderItem = () => {
+  const renderItem = (item) => {
     return (
       <View style={AllFilmsStyle.accordBody}>
-        <TouchableOpacity style={AllFilmsStyle.accordBodyButton}>
-          <Film name="film" size={30} color="#000" />
-        </TouchableOpacity>
+        <View style={AllFilmsStyle.accordBodyButton}>
+          <Image source={{uri:`https://picsum.photos/200/200?random=${Math.random()}`}} style={{height:100, width:100}}/>
+          <Text style={AllFilmsStyle.speciesText}>
+            {item.name}
+          </Text>
+        </View>
       </View>
     )
   }
@@ -41,12 +32,11 @@ export const AccordionItem = ({
           <Text style={AllFilmsStyle.accordTitle}>{title}</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => onDetailsPress()} style={AllFilmsStyle.accordDetailsView}>
-          <Icon name="book" size={30} color="#fff" />
+          <Icon name="chevrons-right" size={30} color="#fff" />
         </TouchableOpacity>
       </View>
 
       {expanded && children && children.length > 0 && (
-        <View style={{flexWrap: 'wrap'}}>
           <FlatList
             key={new Date()}
             horizontal={false}
@@ -54,7 +44,6 @@ export const AccordionItem = ({
             data={children}
             renderItem={({ item }) => renderItem(item)}
           />
-        </View>
       )}
     </View>
   );
