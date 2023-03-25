@@ -2,7 +2,6 @@ import React from 'react';
 import {FlatList, Text, TouchableOpacity, View, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import AllFilmsStyle from '../assets/style/allFilms';
-import StyleConfig from '../assets/style/config';
 
 export const AccordionItem = ({
   children,
@@ -10,26 +9,34 @@ export const AccordionItem = ({
   expanded,
   onHeaderPress,
   onDetailsPress,
-}) => {
-  const renderItem = item => {
+}: any) => {
+  const renderItem = (item: any) => {
     return (
-      <View style={AllFilmsStyle.accordBody}>
-        <Image
-          style={AllFilmsStyle.accordBodyImage}
-          source={{
-            uri: `https://picsum.photos/200/200?random=${Math.random()}`,
-          }}
-        />
-        <Text style={AllFilmsStyle.speciesText} numberOfLines={1}>
-          {item.name}
-        </Text>
+      <View style={AllFilmsStyle.imagesView}>
+        <View>
+          <Image
+            resizeMode="cover"
+            source={{
+              uri: `https://picsum.photos/200/200?random=${Math.random()}`,
+              cache: 'reload',
+            }}
+            style={AllFilmsStyle.accordBodyImage}
+          />
+          <Text style={AllFilmsStyle.speciesText} numberOfLines={1}>
+            {item.name}
+          </Text>
+        </View>
       </View>
     );
   };
 
   return (
     <View style={AllFilmsStyle.accordContainer}>
-      <View style={AllFilmsStyle.accordView}>
+      <View
+        style={[
+          AllFilmsStyle.accordView,
+          expanded ? AllFilmsStyle.borderRadiusView : {},
+        ]}>
         <TouchableOpacity
           style={AllFilmsStyle.accordHeader}
           onPress={onHeaderPress}>
@@ -43,18 +50,15 @@ export const AccordionItem = ({
       </View>
 
       {expanded && children && children.length > 0 && (
-        <FlatList
-          style={{
-            backgroundColor: StyleConfig.white,
-            elevation: 8,
-            padding: StyleConfig.countPixelRatio(5),
-          }}
-          key={new Date()}
-          horizontal={false}
-          numColumns={3}
-          data={children}
-          renderItem={({item}) => renderItem(item)}
-        />
+        <View style={AllFilmsStyle.imageView}>
+          <FlatList
+            keyExtractor={(item: any, index: number) => index}
+            horizontal={false}
+            numColumns={3}
+            data={children}
+            renderItem={({item}) => renderItem(item)}
+          />
+        </View>
       )}
     </View>
   );

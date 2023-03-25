@@ -6,6 +6,7 @@ import {
 } from '@react-navigation/native-stack';
 import AllFilms from '../screens/AllFilms';
 import Films from '../screens/Films';
+import Splash from '../screens/Splash';
 import StyleConfig from '../assets/style/config';
 import {View} from 'react-native';
 
@@ -22,6 +23,7 @@ const filmsTabs: React.FC = () => {
       fontFamily: StyleConfig.bold,
       fontSize: StyleConfig.fontSizeH2,
     },
+    headerBackVisible: false,
   };
 
   return (
@@ -31,6 +33,11 @@ const filmsTabs: React.FC = () => {
           animation: 'slide_from_right',
           presentation: 'card',
         }}>
+        <Stack.Screen
+          name={APP_SCREEN.SPLASH}
+          options={options}
+          component={Splash}
+        />
         <Stack.Screen
           name={APP_SCREEN.All_FILMS}
           options={options}

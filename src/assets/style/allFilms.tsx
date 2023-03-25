@@ -28,13 +28,15 @@ export default StyleSheet.create({
     flex: 0.9,
   },
   accordDetailsView: {
-    flex: 0.1,
+    flex: 0.2,
+    alignItems: 'flex-end',
   },
   accordTitle: {
     color: StyleConfig.white,
     fontSize: StyleConfig.fontSizeFieldTitle,
     fontFamily: StyleConfig.bold,
     textTransform: 'capitalize',
+    flex: 0.8,
   },
   speciesText: {
     paddingTop: StyleConfig.countPixelRatio(5),
@@ -55,14 +57,25 @@ export default StyleSheet.create({
     margin: 1,
   },
   accordBodyImage: {
+    height: WINDOW.width / 3.5,
+    width: WINDOW.width / 3.5,
+  },
+  borderRadiusView: {
+    borderTopLeftRadius: StyleConfig.countPixelRatio(5),
+    borderTopRightRadius: StyleConfig.countPixelRatio(5),
+  },
+  imageView: {
+    width: '100%',
+    backgroundColor: StyleConfig.white,
+    elevation: 8,
+    borderBottomLeftRadius: StyleConfig.countPixelRatio(5),
+    borderBottomRightRadius: StyleConfig.countPixelRatio(5),
     justifyContent: 'center',
     alignItems: 'center',
-    height: 100,
   },
-  textSmall: {
-    fontSize: 16,
-  },
-  seperator: {
-    height: 12,
+  imagesView: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: StyleConfig.countPixelRatio(5),
   },
 });

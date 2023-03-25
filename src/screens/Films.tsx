@@ -1,15 +1,12 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {
   ImageBackground,
   StatusBar,
   Text,
-  SafeAreaView,
   View,
   TouchableOpacity,
   FlatList,
   Image,
-  ScrollView,
-  StyleSheet,
 } from 'react-native';
 import {useQuery} from '@apollo/client';
 import {GET_FILM_BY_ID} from '../graphQL';
@@ -23,7 +20,6 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Feather from 'react-native-vector-icons/Feather';
 import {NavigationService} from '../navigation/navigationServices';
-import AllFilmsStyle from '../assets/style/allFilms';
 import StyleConfig from '../assets/style/config';
 
 export type FilmDetailsProps = NativeStackScreenProps<
