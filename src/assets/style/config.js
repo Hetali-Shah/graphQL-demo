@@ -94,8 +94,8 @@ export default {
   },
 
   // Fonts
-  bold: 'Montserrat-Bold',
-  regular: 'Montserrat-Regular',
+  bold: 'Roboto-Bold',
+  regular: 'Roboto-Regular',
   medium: 'Montserrat-Medium',
   regularItalic: 'Montserrat-Italic',
   andaleMono: Platform.OS === 'ios' ? 'AndaleMono' : 'Andale-Mono',

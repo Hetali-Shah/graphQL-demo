@@ -1,7 +1,8 @@
 import React from 'react';
-import { FlatList, Text, TouchableOpacity, View, Image } from "react-native";
-import Icon from 'react-native-vector-icons/Feather';
+import {FlatList, Text, TouchableOpacity, View, Image} from 'react-native';
+import Icon from 'react-native-vector-icons/Entypo';
 import AllFilmsStyle from '../assets/style/allFilms';
+import StyleConfig from '../assets/style/config';
 
 export const AccordionItem = ({
   children,
@@ -10,40 +11,50 @@ export const AccordionItem = ({
   onHeaderPress,
   onDetailsPress,
 }) => {
-  const renderItem = (item) => {
+  const renderItem = item => {
     return (
       <View style={AllFilmsStyle.accordBody}>
-        <View style={AllFilmsStyle.accordBodyButton}>
-          <Image source={{uri:`https://picsum.photos/200/200?random=${Math.random()}`}} style={{height:100, width:100}}/>
-          <Text style={AllFilmsStyle.speciesText}>
-            {item.name}
-          </Text>
-        </View>
+        <Image
+          style={AllFilmsStyle.accordBodyImage}
+          source={{
+            uri: `https://picsum.photos/200/200?random=${Math.random()}`,
+          }}
+        />
+        <Text style={AllFilmsStyle.speciesText} numberOfLines={1}>
+          {item.name}
+        </Text>
       </View>
-    )
-  }
+    );
+  };
 
   return (
     <View style={AllFilmsStyle.accordContainer}>
-      <View  style={AllFilmsStyle.accordView}>
+      <View style={AllFilmsStyle.accordView}>
         <TouchableOpacity
           style={AllFilmsStyle.accordHeader}
           onPress={onHeaderPress}>
           <Text style={AllFilmsStyle.accordTitle}>{title}</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => onDetailsPress()} style={AllFilmsStyle.accordDetailsView}>
-          <Icon name="chevrons-right" size={30} color="#fff" />
+        <TouchableOpacity
+          onPress={() => onDetailsPress()}
+          style={AllFilmsStyle.accordDetailsView}>
+          <Icon name="chevron-right" size={30} color="#fff" />
         </TouchableOpacity>
       </View>
 
       {expanded && children && children.length > 0 && (
-          <FlatList
-            key={new Date()}
-            horizontal={false}
-            numColumns={3}
-            data={children}
-            renderItem={({ item }) => renderItem(item)}
-          />
+        <FlatList
+          style={{
+            backgroundColor: StyleConfig.white,
+            elevation: 8,
+            padding: StyleConfig.countPixelRatio(5),
+          }}
+          key={new Date()}
+          horizontal={false}
+          numColumns={3}
+          data={children}
+          renderItem={({item}) => renderItem(item)}
+        />
       )}
     </View>
   );
