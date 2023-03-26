@@ -54,6 +54,7 @@ export const AccordionItem = ({
         <TouchableOpacity
           onPress={() => onDetailsPress()}
           style={AllFilmsStyle.accordDetailsView}>
+          <Text style={AllFilmsStyle.detailText}>Details</Text>
           <Icon name="chevron-right" size={30} color="#fff" />
         </TouchableOpacity>
       </View>

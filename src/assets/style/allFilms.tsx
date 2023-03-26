@@ -25,14 +25,23 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
   },
   accordHeader: {
-    flex: 0.9,
+    flex: 0.8,
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
   },
   accordDetailsView: {
-    flex: 0.1,
+    flex: 0.2,
     alignItems: 'flex-end',
+    flexDirection: 'row',
+  },
+  detailText: {
+    color: StyleConfig.white,
+    fontSize: StyleConfig.fontSizeSubParagraph,
+    fontFamily: StyleConfig.regular,
+    textTransform: 'capitalize',
+    bottom: StyleConfig.countPixelRatio(8),
+    left: StyleConfig.countPixelRatio(6),
   },
   accordTitle: {
     color: StyleConfig.white,
