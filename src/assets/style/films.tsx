@@ -116,4 +116,8 @@ export default StyleSheet.create({
     display: 'flex',
     paddingHorizontal: StyleConfig.countPixelRatio(15),
   },
+  pipeSign: {
+    fontSize: StyleConfig.countPixelRatio(20),
+    color: StyleConfig.white,
+  },
 });

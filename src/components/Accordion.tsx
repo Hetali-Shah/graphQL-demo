@@ -3,13 +3,19 @@ import {LayoutAnimation} from 'react-native';
 import {AccordionItem} from './AccordionItem';
 import {NavigationService} from '../navigation/navigationServices';
 import {APP_SCREEN} from '../navigation/screenTypes';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-export type AccordionDetailsProps = NativeStackScreenProps<any | undefined>;
+export interface starWarsProps {
+  data: starWarsData[];
+  navigation: any;
+}
 
-const AccordionDetailsComponent: React.FC<AccordionDetailsProps> = (
-  props: AccordionDetailsProps,
-) => {
+export interface starWarsData {
+  id: string;
+  title: string;
+  speciesConnection: object;
+}
+
+const AccordionDetailsComponent = (props: starWarsProps) => {
   const [expandedIndex, setExpandedIndex] = useState(null);
 
   const handleHeaderPress = (index: null) => {

@@ -48,22 +48,25 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
   }, []);
 
   if (error) {
-    return <Text>Error</Text>;
-  }
-
-  if (data === undefined || data === null) {
     return <NoDataFound />;
   }
 
-  const {title, director, releaseDate, openingCrawl, created, producers} =
-    data.film;
+  if (data === undefined || data === null) {
+    if (loading) {
+      return <Loader loaderStyle={SplashStyle.loaderView} />;
+    } else {
+      return <NoDataFound />;
+    }
+  }
 
-  // @ts-ignore
-  // @ts-ignore
-  // @ts-ignore
-  return loading ? (
-    <Loader loaderStyle={SplashStyle.loaderView} />
-  ) : (
+  if (loading) {
+    return <Loader loaderStyle={SplashStyle.loaderView} />;
+  }
+
+  const {title, director, releaseDate, openingCrawl, created, producers} =
+    data && data.film;
+
+  return (
     <ScrollView style={FilmsStyle.container}>
       <StatusBar
         barStyle="light-content"
@@ -88,12 +91,12 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
                     {new Date(releaseDate).toISOString().substring(0, 10)}
                   </Text>
                 </View>
-                <Text style={{fontSize: 20}}>|</Text>
+                <Text style={FilmsStyle.pipeSign}>|</Text>
                 <View style={FilmsStyle.dateNestedView}>
                   <FontAwesome5 name="calendar-alt" size={10} color="#fff" />
                   <Text style={FilmsStyle.dateText}>2020</Text>
                 </View>
-                <Text style={{fontSize: 20}}>|</Text>
+                <Text style={FilmsStyle.pipeSign}>|</Text>
                 <View style={FilmsStyle.dateNestedView}>
                   <Text style={FilmsStyle.dateText}>{director}</Text>
                 </View>
