@@ -9,7 +9,7 @@ export default StyleSheet.create({
   },
   accordContainer: {
     padding: StyleConfig.countPixelRatio(5),
-    paddingBottom: StyleConfig.countPixelRatio(5),
+    paddingBottom: StyleConfig.countPixelRatio(2),
   },
   accordView: {
     margin: StyleConfig.countPixelRatio(0),
@@ -19,7 +19,7 @@ export default StyleSheet.create({
     shadowOpacity: 0.25,
     shadowColor: '#fff',
     elevation: 8,
-    alignItems: 'flex-start',
+    alignItems: 'center',
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -27,6 +27,8 @@ export default StyleSheet.create({
   accordHeader: {
     flex: 0.9,
     flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'center',
   },
   accordDetailsView: {
     flex: 0.1,
@@ -38,7 +40,8 @@ export default StyleSheet.create({
     fontFamily: StyleConfig.bold,
     textTransform: 'capitalize',
     flex: 0.8,
-    paddingTop: StyleConfig.countPixelRatio(2),
+    paddingTop: StyleConfig.countPixelRatio(17),
+    paddingLeft: StyleConfig.countPixelRatio(5),
   },
   filmName: {
     color: StyleConfig.black,

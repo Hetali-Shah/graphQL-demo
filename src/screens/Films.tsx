@@ -104,14 +104,8 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
                 <View style={FilmsStyle.dateNestedView}>
                   <FontAwesome5 name="calendar-alt" size={10} color="#fff" />
                   <Text style={FilmsStyle.dateText}>
+                    Release Date :{' '}
                     {new Date(releaseDate).toISOString().substring(0, 10)}
-                  </Text>
-                </View>
-                <Text style={FilmsStyle.pipeSign}>|</Text>
-                <View style={FilmsStyle.dateNestedView}>
-                  <FontAwesome5 name="calendar-alt" size={10} color="#fff" />
-                  <Text style={FilmsStyle.dateText}>
-                    {new Date(created).toISOString().substring(0, 10)}
                   </Text>
                 </View>
                 <Text style={FilmsStyle.pipeSign}>|</Text>
@@ -155,6 +149,12 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
         style={{
           paddingHorizontal: StyleConfig.countPixelRatio(15),
         }}>
+        <View style={FilmsStyle.createdDateView}>
+          <Text style={FilmsStyle.createdDate}>
+            Created Date :{' '}
+            {new Date(releaseDate).toISOString().substring(0, 10)}
+          </Text>
+        </View>
         <Text style={FilmsStyle.producerTitleText}>
           {producers.length > 1 ? 'Producers' : 'Producer'}
         </Text>

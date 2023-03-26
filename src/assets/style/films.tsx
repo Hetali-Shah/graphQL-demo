@@ -14,7 +14,7 @@ export default StyleSheet.create({
   },
   imageBackGround: {
     width: '100%',
-    aspectRatio: 0.7,
+    aspectRatio: 0.8,
   },
   safeAreaMainView: {
     padding: StyleConfig.countPixelRatio(15),
@@ -35,7 +35,7 @@ export default StyleSheet.create({
   dateView: {
     width: '100%',
     justifyContent: 'center',
-    paddingTop: StyleConfig.countPixelRatio(15),
+    paddingTop: StyleConfig.countPixelRatio(10),
     alignItems: 'center',
     flexDirection: 'row',
   },
@@ -104,6 +104,18 @@ export default StyleSheet.create({
     color: StyleConfig.black,
     fontFamily: StyleConfig.bold,
     padding: StyleConfig.countPixelRatio(5),
+    paddingTop: StyleConfig.countPixelRatio(8),
+  },
+  createdDate: {
+    paddingTop: StyleConfig.countPixelRatio(8),
+    fontSize: StyleConfig.fontSizeFieldTitle,
+    color: StyleConfig.black,
+    fontFamily: StyleConfig.bold,
+  },
+  createdDateView: {
+    paddingHorizontal: StyleConfig.countPixelRatio(5),
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   imageView: {
     width: '100%',
@@ -112,7 +124,7 @@ export default StyleSheet.create({
     elevation: 8,
   },
   openingView: {
-    height: '76%',
+    height: '73%',
     display: 'flex',
     paddingHorizontal: StyleConfig.countPixelRatio(15),
   },

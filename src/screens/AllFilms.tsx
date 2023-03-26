@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useQuery} from '@apollo/client';
-import {SafeAreaView, ScrollView} from 'react-native';
+import {SafeAreaView, ScrollView, View} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {GET_FILMS} from '../graphQL';
 import AllFilmsStyle from '../assets/style/allFilms';
@@ -9,6 +9,8 @@ import NoDataFound from '../components/NoDataFound';
 import {APP_SCREEN, RootStackParamList} from '../navigation/screenTypes';
 import Loader from '../components/Loader';
 import SplashStyle from '../assets/style/splash';
+import Entypo from 'react-native-vector-icons/Entypo';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 export type AllFilmDetailsProps = NativeStackScreenProps<
   RootStackParamList,
@@ -23,7 +25,13 @@ const AllFilmDetailsComponent: React.FC<AllFilmDetailsProps> = (
 
   useEffect(() => {
     navigation.setOptions({
-      headerLeft: () => null,
+      headerShown: true,
+      headerLeft: () => (
+        <View style={{right: 10}}>
+          <Entypo name="menu" size={30} color="#fff" />
+        </View>
+      ),
+      headerRight: () => <FontAwesome5 name="search" size={20} color="#fff" />,
     });
   }, []);
 

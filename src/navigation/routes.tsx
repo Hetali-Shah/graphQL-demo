@@ -23,7 +23,6 @@ const filmsTabs: React.FC = () => {
       fontFamily: StyleConfig.bold,
       fontSize: StyleConfig.fontSizeH2,
     },
-    headerBackVisible: false,
   };
 
   return (

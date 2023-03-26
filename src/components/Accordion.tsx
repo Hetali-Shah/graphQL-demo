@@ -19,7 +19,7 @@ export interface starWarsData {
 const AccordionDetailsComponent = (props: starWarsProps) => {
   const [expandedIndex, setExpandedIndex] = useState(null);
 
-  const handleHeaderPress = (index: null) => {
+  const handleHeaderPress = (index: any) => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     setExpandedIndex(expandedIndex === index ? null : index);
   };
