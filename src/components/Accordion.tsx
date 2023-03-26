@@ -45,7 +45,6 @@ const AccordionDetailsComponent = (props: starWarsProps) => {
             }
             expanded={expandedIndex === index}
             onHeaderPress={() => handleHeaderPress(index)}
-            navigation={props.navigation}
             onDetailsPress={() => onDetailsPress(item.title, item.id)}>
             {item.speciesConnection && item.speciesConnection.species}
           </AccordionItem>

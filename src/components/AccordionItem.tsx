@@ -14,6 +14,15 @@ export const IMAGES = [
   require('../assets/images/7.jpg'),
 ];
 
+export interface AccordionItemInterface {
+  children: [];
+  title: string;
+  expanded: boolean;
+  onHeaderPress: () => void;
+  onDetailsPress: () => void;
+  image: undefined;
+}
+
 export const AccordionItem = ({
   children,
   title,
@@ -21,7 +30,7 @@ export const AccordionItem = ({
   onHeaderPress,
   onDetailsPress,
   image,
-}: any) => {
+}: AccordionItemInterface) => {
   return (
     <View style={AllFilmsStyle.accordContainer}>
       <View

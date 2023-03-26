@@ -21,7 +21,7 @@ export default StyleSheet.create({
   accordBodyImage: {
     height: StyleConfig.countPixelRatio(100),
     width: StyleConfig.countPixelRatio(100),
-    borderRadius: StyleConfig.countPixelRatio(25),
+    borderRadius: StyleConfig.countPixelRatio(10),
     justifyContent: 'center',
     alignItems: 'center',
     margin: StyleConfig.countPixelRatio(5),
