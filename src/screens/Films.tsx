@@ -8,9 +8,9 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
+import SeeMore from 'react-native-see-more-inline';
 import {useQuery} from '@apollo/client';
 import {GET_FILM_BY_ID} from '../graphQL';
-import NoDataFound from '../components/NoDataFound';
 import FilmsStyle from '../assets/style/films';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import LinearGradient from 'react-native-linear-gradient';
@@ -22,6 +22,7 @@ import CommonStyle from '../assets/style/layout';
 import HeaderItem from '../components/Films/HeaderItem';
 import Loader from '../components/Loader';
 import SplashStyle from '../assets/style/splash';
+import NoDataFound from '../components/NoDataFound';
 
 export type FilmDetailsProps = NativeStackScreenProps<
   RootStackParamList,
@@ -39,18 +40,6 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
     variables: {id},
   });
 
-  const [textShown, setTextShown] = useState(false);
-  const [lengthMore, setLengthMore] = useState(false); //to show the "Read more & Less Line"
-  const toggleNumberOfLines = () => {
-    //To toggle the show text or hide it
-    setTextShown(!textShown);
-  };
-
-  const onTextLayout = useCallback((e: any): void => {
-    setLengthMore(e.nativeEvent.lines.length >= 4); //to check the text is more than 4 lines or not
-    // console.log(e.nativeEvent);
-  }, []);
-
   useEffect(() => {
     navigation.setOptions({
       headerShown: false,
@@ -62,10 +51,6 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
     return <Text>Error</Text>;
   }
 
-  if (loading) {
-    return <Text>Loading .....</Text>;
-  }
-
   if (data === undefined || data === null) {
     return <NoDataFound />;
   }
@@ -73,6 +58,9 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
   const {title, director, releaseDate, openingCrawl, created, producers} =
     data.film;
 
+  // @ts-ignore
+  // @ts-ignore
+  // @ts-ignore
   return loading ? (
     <Loader loaderStyle={SplashStyle.loaderView} />
   ) : (
@@ -91,7 +79,7 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
           style={{height: '100%', width: '100%'}}>
           <View style={FilmsStyle.safeAreaMainView}>
             <HeaderItem />
-            <View style={{paddingTop: 150}}>
+            <View style={{paddingTop: 100}}>
               <Text style={FilmsStyle.bookTitle}>{title}</Text>
               <View style={FilmsStyle.dateView}>
                 <View style={FilmsStyle.dateNestedView}>
@@ -118,28 +106,23 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
                     </Text>
                     <View style={FilmsStyle.openingCrawlIconView}>
                       <View style={{flex: 0.7, alignItems: 'flex-end'}}>
-                        <Entypo name="download" size={20} color="red" />
+                        <Entypo name="download" size={20} color="#ff4343" />
                       </View>
 
                       <View style={{flex: 0.3, alignItems: 'flex-end'}}>
-                        <FontAwesome5 name="share" size={20} color="red" />
+                        <FontAwesome5 name="share" size={20} color="#ff4343" />
                       </View>
                     </View>
                   </View>
 
                   <View style={FilmsStyle.openingCrawlMainView}>
-                    <Text
-                      style={FilmsStyle.openingCrawText}
-                      onTextLayout={onTextLayout}
-                      numberOfLines={textShown ? undefined : 3.8}>
+                    <SeeMore
+                      seeMoreText={'Read More'}
+                      seeLessText={'Read Less'}
+                      numberOfLines={4}
+                      style={FilmsStyle.openingCrawText}>
                       {openingCrawl.replace(/[\r\n]/gm, '')}
-                    </Text>
-                    {/*{
-                    lengthMore ? <Text
-                        onPress={toggleNumberOfLines}
-                        style={{ lineHeight: 21, marginTop: 10 }}>{textShown ? 'Read less' : 'Read more'}</Text>
-                      :null
-                  }*/}
+                    </SeeMore>
                   </View>
                 </View>
               </View>
@@ -160,7 +143,7 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
             horizontal={true}
             data={producers}
             renderItem={({item}) => (
-              <View style={FilmsStyle.imagesView}>
+              <View>
                 <Image
                   resizeMode="cover"
                   source={{
@@ -169,7 +152,11 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
                   }}
                   style={CommonStyle.accordBodyImage}
                 />
-                <Text style={[CommonStyle.speciesText, {width: '80%'}]}>
+                <Text
+                  style={[
+                    CommonStyle.speciesText,
+                    {width: 100, paddingLeft: StyleConfig.countPixelRatio(8)},
+                  ]}>
                   {item}
                 </Text>
               </View>

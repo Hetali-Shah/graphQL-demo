@@ -14,7 +14,7 @@ export default StyleSheet.create({
   },
   imageBackGround: {
     width: '100%',
-    aspectRatio: 0.7,
+    aspectRatio: 0.8,
   },
   safeAreaMainView: {
     padding: StyleConfig.countPixelRatio(15),
@@ -72,7 +72,6 @@ export default StyleSheet.create({
     fontSize: StyleConfig.fontSizeParagraph,
     color: StyleConfig.white,
     fontFamily: StyleConfig.regular,
-    lineHeight: StyleConfig.countPixelRatio(20),
   },
   producerMainView: {
     paddingHorizontal: StyleConfig.countPixelRatio(5),
@@ -108,10 +107,9 @@ export default StyleSheet.create({
   },
   imageView: {
     width: '100%',
+    shadowOffset: {width: 0, height: StyleConfig.countPixelRatio(2)},
+    shadowOpacity: 0.25,
     elevation: 8,
-  },
-  imagesView: {
-    padding: StyleConfig.countPixelRatio(5),
   },
   openingView: {
     height: '72%',

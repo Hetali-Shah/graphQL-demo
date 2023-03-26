@@ -16,8 +16,10 @@ export default StyleSheet.create({
   },
   imagesView: {},
   accordBodyImage: {
-    height: WINDOW.width / 3.5,
-    width: WINDOW.width / 3.5,
+    height: 100,
+    width: 100,
+    borderRadius: StyleConfig.countPixelRatio(10),
+    margin: 5,
   },
   speciesText: {
     paddingTop: StyleConfig.countPixelRatio(5),

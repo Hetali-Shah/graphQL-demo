@@ -2,26 +2,6 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "src/assets/fonts/Andale-Mono.ttf",
-      "sha1": "e74275d20f0587c708ee99e75d75b3befe5ce0b0"
-    },
-    {
-      "path": "src/assets/fonts/Montserrat-Bold.ttf",
-      "sha1": "3320ff5514b32565b0396de4f2064ce17ec9eea4"
-    },
-    {
-      "path": "src/assets/fonts/Montserrat-Italic.ttf",
-      "sha1": "2ff6c8d3a64ccd9f3c85dc7eef16a818af7075bc"
-    },
-    {
-      "path": "src/assets/fonts/Montserrat-Medium.ttf",
-      "sha1": "ca42fe10fa893f390472859405c7564095e4260f"
-    },
-    {
-      "path": "src/assets/fonts/Montserrat-Regular.ttf",
-      "sha1": "ff1eb5d360a42c0c675d8ecfca9a3e5b709d302a"
-    },
-    {
       "path": "src/assets/fonts/Roboto-Bold.ttf",
       "sha1": "62442a18a9fe9457c1afeabf683d263a691b7798"
     },
