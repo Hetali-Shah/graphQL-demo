@@ -14,7 +14,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const filmsTabs: React.FC = () => {
   const options: NativeStackNavigationOptions = {
-    title: 'Star Wars',
+    title: 'StarWars',
     headerStyle: {
       backgroundColor: '#525bb7',
     },

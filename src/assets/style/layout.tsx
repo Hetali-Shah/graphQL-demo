@@ -4,25 +4,30 @@ import {WINDOW} from '../../common/global';
 
 export default StyleSheet.create({
   imageView: {
-    flex: 1,
+    width: '100%',
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexWrap: 'wrap',
     backgroundColor: StyleConfig.white,
     elevation: 8,
     borderBottomLeftRadius: StyleConfig.countPixelRatio(5),
     borderBottomRightRadius: StyleConfig.countPixelRatio(5),
-    padding: StyleConfig.countPixelRatio(10),
+    padding: StyleConfig.countPixelRatio(5),
   },
-  imagesView: {},
+  imagesView: {
+    height: StyleConfig.countPixelRatio(50),
+    width: StyleConfig.countPixelRatio(50),
+    margin: StyleConfig.countPixelRatio(5),
+  },
   accordBodyImage: {
-    height: 100,
-    width: 100,
-    borderRadius: StyleConfig.countPixelRatio(10),
-    margin: 5,
+    height: StyleConfig.countPixelRatio(100),
+    width: StyleConfig.countPixelRatio(100),
+    borderRadius: StyleConfig.countPixelRatio(25),
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: StyleConfig.countPixelRatio(5),
   },
   speciesText: {
-    paddingTop: StyleConfig.countPixelRatio(5),
+    paddingLeft: StyleConfig.countPixelRatio(8),
     color: StyleConfig.black,
     fontSize: StyleConfig.fontSizeFieldTitle,
     fontFamily: StyleConfig.regular,
@@ -30,6 +35,5 @@ export default StyleSheet.create({
     shadowOffset: {width: 0, height: StyleConfig.countPixelRatio(2)},
     shadowOpacity: 0.25,
     elevation: 8,
-    width: '50%',
   },
 });

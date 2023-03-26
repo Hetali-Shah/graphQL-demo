@@ -14,7 +14,7 @@ export default StyleSheet.create({
   },
   imageBackGround: {
     width: '100%',
-    aspectRatio: 0.8,
+    aspectRatio: 0.7,
   },
   safeAreaMainView: {
     padding: StyleConfig.countPixelRatio(15),
@@ -66,7 +66,7 @@ export default StyleSheet.create({
     flex: 0.6,
     fontSize: StyleConfig.fontSizeFieldTitle,
     color: StyleConfig.white,
-    fontFamily: StyleConfig.bold,
+    fontFamily: StyleConfig.regular,
   },
   openingCrawText: {
     fontSize: StyleConfig.fontSizeParagraph,
@@ -112,12 +112,18 @@ export default StyleSheet.create({
     elevation: 8,
   },
   openingView: {
-    height: '72%',
+    height: '76%',
     display: 'flex',
     paddingHorizontal: StyleConfig.countPixelRatio(15),
   },
   pipeSign: {
     fontSize: StyleConfig.countPixelRatio(20),
     color: StyleConfig.white,
+  },
+  imageSize: {
+    height: 100,
+    width: 100,
+    borderRadius: StyleConfig.countPixelRatio(10),
+    margin: StyleConfig.countPixelRatio(5),
   },
 });

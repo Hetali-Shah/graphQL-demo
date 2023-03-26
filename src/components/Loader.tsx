@@ -23,9 +23,8 @@ const Loader = ({isAppText = false, loaderStyle}: any) => {
       />
       {isAppText && (
         <View style={{flexDirection: 'row'}}>
-          <Text style={SplashStyle.appText}>Fun</Text>
-          <Text style={[SplashStyle.appText, {color: '#525bb7'}]}>2</Text>
-          <Text style={SplashStyle.appText}>Watch</Text>
+          <Text style={SplashStyle.appText}>Star</Text>
+          <Text style={[SplashStyle.appText, {color: '#525bb7'}]}>Wars</Text>
         </View>
       )}
     </View>

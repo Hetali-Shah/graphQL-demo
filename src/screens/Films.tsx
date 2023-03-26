@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {
   ImageBackground,
   StatusBar,
@@ -23,6 +23,22 @@ import HeaderItem from '../components/Films/HeaderItem';
 import Loader from '../components/Loader';
 import SplashStyle from '../assets/style/splash';
 import NoDataFound from '../components/NoDataFound';
+
+export const IMAGES = [
+  require('../assets/images/1.jpg'),
+  require('../assets/images/2.jpg'),
+  require('../assets/images/3.jpg'),
+  require('../assets/images/4.jpg'),
+  require('../assets/images/5.jpg'),
+  require('../assets/images/6.jpg'),
+  require('../assets/images/7.jpg'),
+];
+
+export const PRODUCERS = [
+  require('../assets/images/user1.jpeg'),
+  require('../assets/images/user2.jpeg'),
+  require('../assets/images/user3.jpeg'),
+];
 
 export type FilmDetailsProps = NativeStackScreenProps<
   RootStackParamList,
@@ -76,9 +92,9 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
       <ImageBackground
         style={FilmsStyle.imageBackGround}
         resizeMode="cover"
-        source={{uri: `https://picsum.photos/200/200?random=${Math.random()}`}}>
+        source={IMAGES[Math.floor(Math.random() * IMAGES.length)]}>
         <LinearGradient
-          colors={['#00000000', '#000000']}
+          colors={['#00000020', '#000000']}
           style={{height: '100%', width: '100%'}}>
           <View style={FilmsStyle.safeAreaMainView}>
             <HeaderItem />
@@ -94,7 +110,9 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
                 <Text style={FilmsStyle.pipeSign}>|</Text>
                 <View style={FilmsStyle.dateNestedView}>
                   <FontAwesome5 name="calendar-alt" size={10} color="#fff" />
-                  <Text style={FilmsStyle.dateText}>2020</Text>
+                  <Text style={FilmsStyle.dateText}>
+                    {new Date(created).toISOString().substring(0, 10)}
+                  </Text>
                 </View>
                 <Text style={FilmsStyle.pipeSign}>|</Text>
                 <View style={FilmsStyle.dateNestedView}>
@@ -145,15 +163,16 @@ const FilmDetailsComponent: React.FC<FilmDetailsProps> = (
             keyExtractor={(item: any) => item.id}
             horizontal={true}
             data={producers}
-            renderItem={({item}) => (
+            renderItem={({item, index}) => (
               <View>
                 <Image
                   resizeMode="cover"
-                  source={{
-                    uri: `https://picsum.photos/200/200?random=${Math.random()}`,
-                    cache: 'reload',
-                  }}
-                  style={CommonStyle.accordBodyImage}
+                  source={
+                    [].concat(...new Array(producers.length).fill(PRODUCERS))[
+                      index
+                    ]
+                  }
+                  style={FilmsStyle.imageSize}
                 />
                 <Text
                   style={[

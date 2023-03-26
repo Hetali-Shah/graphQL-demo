@@ -49,6 +49,7 @@ const AllFilmDetailsComponent: React.FC<AllFilmDetailsProps> = (
         contentInsetAdjustmentBehavior="automatic"
         style={AllFilmsStyle.container}>
         <AccordionDetailsComponent
+          totalCount={data.allFilms.totalCount}
           data={data.allFilms.films}
           navigation={navigation}
         />

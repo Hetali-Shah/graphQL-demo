@@ -4,33 +4,24 @@ import Icon from 'react-native-vector-icons/Entypo';
 import AllFilmsStyle from '../assets/style/allFilms';
 import CommonStyle from '../assets/style/layout';
 
+export const IMAGES = [
+  require('../assets/images/1.jpg'),
+  require('../assets/images/2.jpg'),
+  require('../assets/images/3.jpg'),
+  require('../assets/images/4.jpg'),
+  require('../assets/images/5.jpg'),
+  require('../assets/images/6.jpg'),
+  require('../assets/images/7.jpg'),
+];
+
 export const AccordionItem = ({
   children,
   title,
   expanded,
   onHeaderPress,
   onDetailsPress,
+  image,
 }: any) => {
-  const renderItem = (item: any) => {
-    return (
-      <View style={CommonStyle.imagesView}>
-        <View>
-          <Image
-            resizeMode="cover"
-            source={{
-              uri: `https://picsum.photos/200/200?random=${Math.random()}`,
-              cache: 'reload',
-            }}
-            style={CommonStyle.accordBodyImage}
-          />
-          <Text style={CommonStyle.speciesText} numberOfLines={1}>
-            {item.name}
-          </Text>
-        </View>
-      </View>
-    );
-  };
-
   return (
     <View style={AllFilmsStyle.accordContainer}>
       <View
@@ -41,8 +32,16 @@ export const AccordionItem = ({
         <TouchableOpacity
           style={AllFilmsStyle.accordHeader}
           onPress={onHeaderPress}>
-          <Text style={AllFilmsStyle.accordTitle}>{title}</Text>
+          <Image
+            resizeMode="cover"
+            source={image}
+            style={CommonStyle.imagesView}
+          />
+          <View style={{flex: 0.8}}>
+            <Text style={AllFilmsStyle.accordTitle}>{title}</Text>
+          </View>
         </TouchableOpacity>
+
         <TouchableOpacity
           onPress={() => onDetailsPress()}
           style={AllFilmsStyle.accordDetailsView}>
@@ -54,14 +53,22 @@ export const AccordionItem = ({
         <View style={CommonStyle.imageView}>
           <FlatList
             keyExtractor={(item: any) => item.id}
-            horizontal={false}
-            numColumns={3}
+            horizontal={true}
             data={children}
-            renderItem={({item}) => renderItem(item)}
-            columnWrapperStyle={{
-              justifyContent: 'space-around',
-              flexWrap: 'wrap',
-            }}
+            renderItem={({item, index}) => (
+              <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                <Image
+                  resizeMode="cover"
+                  source={
+                    [].concat(
+                      ...new Array(children ? children.length : 6).fill(IMAGES),
+                    )[index]
+                  }
+                  style={CommonStyle.accordBodyImage}
+                />
+                <Text style={CommonStyle.speciesText}>{item.name}</Text>
+              </View>
+            )}
           />
         </View>
       )}

@@ -3,6 +3,7 @@ import {gql} from '@apollo/client';
 export const GET_FILMS = gql`
   query AllFilms {
     allFilms {
+      totalCount
       films {
         id
         title

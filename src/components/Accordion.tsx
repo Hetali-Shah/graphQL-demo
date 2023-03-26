@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import {LayoutAnimation} from 'react-native';
-import {AccordionItem} from './AccordionItem';
+import {AccordionItem, IMAGES} from './AccordionItem';
 import {NavigationService} from '../navigation/navigationServices';
 import {APP_SCREEN} from '../navigation/screenTypes';
 
 export interface starWarsProps {
   data: starWarsData[];
   navigation: any;
+  totalCount: number;
 }
 
 export interface starWarsData {
@@ -39,6 +40,9 @@ const AccordionDetailsComponent = (props: starWarsProps) => {
           <AccordionItem
             key={index}
             title={item.title}
+            image={
+              [].concat(...new Array(props.totalCount).fill(IMAGES))[index]
+            }
             expanded={expandedIndex === index}
             onHeaderPress={() => handleHeaderPress(index)}
             navigation={props.navigation}
